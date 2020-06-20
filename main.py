@@ -1,15 +1,21 @@
-from flask import Flask, redirect, url_for, render_template, request
+from flask import Flask, redirect, url_for, render_template, request, flash
 
 app = Flask(__name__)   # Initializes app instance 
+app.secret_key = "0RjiQhdtLs"
 
 @app.route("/", methods=["POST", "GET"])    # Sets URL tag for home page and initializes HTTP protocols 
 def home():                                 # Defines and renders home page
     if request.method == "POST":
-        research = request.form["research"]
-        key_word1 = request.form["keyword1"]
-        key_word2 = request.form["keyword2"]
-        key_word3 = request.form["keyword3"]
-        return redirect(url_for("research", topic=research, word1=key_word1, word2=key_word2, word3=key_word3))
+        topic = request.form["research"]
+        keyword1 = request.form["keyword1"]
+        keyword2 = request.form["keyword2"]
+        keyword3 = request.form["keyword3"]
+        keywords = [keyword1, keyword2, keyword3]
+        if len(topic) == 0 or len(keyword1) == 0 or (keyword2) == 0 or (keyword3) == 0:
+            flash("Fill in all the boxes!")
+            return redirect(url_for("home"))
+    
+        return redirect(url_for("research", topic=topic, word1=keyword1, word2=keyword2, word3=keyword3))
     else: 
         return render_template("home.html")
 
