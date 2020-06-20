@@ -8,7 +8,6 @@
     {% for name in content %}
         <p> {{name}} </p>
     {% endfor %}
-    <form>
-        <input type="button" value="Go back!" onclick="history.back()">
-    </form>
+    <button onclick="history.back()">Go Back!</button>
+
 {% endblock %}

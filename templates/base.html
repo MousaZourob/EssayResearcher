@@ -5,9 +5,40 @@
     {% block head %}
     {% endblock %}
     <link rel="stylesheet" type = "text/css" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+    <div id="top">
+        <h1>Essay Research Assistant</h1>
+    </div>
+    <style>
+        p, a, input, button {
+            font-family: 'Roboto', sans-serif;
+            color: black;
+        }
+
+        #top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            margin: 0px;
+            background-color: rgb(102, 0, 204);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            width: 100%;
+            text-align: center;
+            height: 85px;
+        }
+
+        #content {
+            margin-top: 100px;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>

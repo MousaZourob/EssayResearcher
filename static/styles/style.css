@@ -1,2 +1,21 @@
-  
-body {color:red;}
+/*
+    Color Scheme:
+    primary: rgb(102, 0, 204)
+    secondary: white
+    text: black
+
+    Font:
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
+*/
+
+#top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0px;
+    background-color: rgb(102, 0, 204);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+}
