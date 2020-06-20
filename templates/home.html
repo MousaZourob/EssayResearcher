@@ -1,13 +1,20 @@
 {% extends 'base.html' %}
 
-{% block title %} SmartResearch {% endblock %}
+{% block head %} 
+    <title> SmartResearch </title>
+{% endblock %}
 
 {% block content %}
     <form action="#" method="post">
         <p>Topic:</p>
-        <input type="text" name="research" />
+        <input type="text" name="research"/>
         <p>Key words:</p>
-        <input type="text" name="keywords" />
+        <input type="text" name="keyword1"/>
+        <br />
+        <input type="text" name="keyword2"/>
+        <br />
+        <input type="text" name="keyword3"/>
+        <br />
         <input type="submit" value=submit />
     </form>
 {% endblock %}
