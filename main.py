@@ -10,18 +10,24 @@ def home():                                 # Defines and renders home page
         keyword1 = request.form["keyword1"]
         keyword2 = request.form["keyword2"]
         keyword3 = request.form["keyword3"]
-        keywords = [keyword1, keyword2, keyword3]
-        if len(topic) == 0 or len(keyword1) == 0 or (keyword2) == 0 or (keyword3) == 0:
+        user_input = [topic, keyword1, keyword2, keyword3]
+        
+        check_empty = False
+        for word in user_input:
+            if not word:
+                check_empty =True
+
+        if check_empty:
             flash("Fill in all the boxes!")
             return redirect(url_for("home"))
-    
-        return redirect(url_for("research", topic=topic, word1=keyword1, word2=keyword2, word3=keyword3))
+
+        return redirect(url_for("research", words=list(user_input)))
     else: 
         return render_template("home.html")
 
-@app.route("/topic=<topic>+word1=<word1>+word2=<word2>+word3=<word3>")          # Sets URL tag for research page
-def research(topic, word1, word2, word3):                                       # Defines and renders research page
-    return render_template("research.html", content=[topic, word1, word2, word3])
+@app.route("/<words>")                                     # Sets URL tag for research page
+def research(words):                                       # Defines and renders research page
+    return render_template("research.html", content=list(words))
 
 if __name__ == "__main__":  # Runs website
     app.run(debug=True)
