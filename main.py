@@ -79,4 +79,4 @@ def research(words):                                       # Defines and renders
     return render_template("research.html", content=list(words))
 
 if __name__ == "__main__":  # Runs website
-    app.run(debug=True, host='192.168.2.100', port=80)
+    app.run(debug=True, port=80)
