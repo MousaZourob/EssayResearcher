@@ -44,12 +44,6 @@ def get_top_links(html_code):
 
 	return links
 
-query = "gambling addiction"
-keywords = ["drug", "crime"]
-links = get_top_links(get_google_html(query, keywords))
-for link in links:
-	print(link)
-
 # BS4 Stuff
 ###########################################################################################
 # Flask Stuff
@@ -60,15 +54,16 @@ app.secret_key = "0RjiQhdtLs"
 @app.route("/", methods=["POST", "GET"])    # Sets URL tag for home page and initializes HTTP protocols 
 def home():                                 # Defines and renders home page
     if request.method == "POST":
+        user_input = []
+
         topic = request.form["research"]
-        keyword1 = request.form["keyword1"]
-        keyword2 = request.form["keyword2"]
-        keyword3 = request.form["keyword3"]
-        user_input = [topic, keyword1, keyword2, keyword3]
-        
+        user_input = request.form["keywords"].split(", ")
+        user_input.insert(0, topic)  
+        print(user_input)
+
         check_empty = False
         for word in user_input:
-            if not word:
+            if not word:    
                 check_empty =True
 
         if check_empty:
