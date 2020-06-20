@@ -28,7 +28,6 @@
     </form>
 {% endblock %}
 
-<!--
 {% block start %}
     <style>
         #start {
@@ -60,10 +59,22 @@
             font-family: 'Roboto', sans-serif;
         }
     </style>
+
     <div id="start">
         <h1>Essay Research Assistant</h1>
         <span>A program that lets you specify a topic and keywords and returns information from articles on the internet.</span>
         <br>
-        <button onclick="document.getElementById('start').style.display = 'none'">Start!</button>          
+        <button id="start-button">Start!</button>
+        <!-- onclick="document.getElementById('start').style.display = 'none'" -->
     </div>
-{% endblock %} -->
+
+    <script>
+        if (window.location.href.indexOf('#') > 0) {document.getElementById('start').style.display = 'none'}
+
+        $(document).ready(function(){
+            $("#start-button").click(function(){
+                $("#start").slideUp("slow");
+            });
+        });
+    </script>
+{% endblock %}
