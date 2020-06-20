@@ -13,7 +13,7 @@ def home():                                 # Defines and renders home page
 
 @app.route("/<topic>")         # Sets URL tag for research page
 def research(topic):     # Defines and renders research page
-    return f"<h1>{topic}</h1>"
+    return render_template("research.html")
 
 if __name__ == "__main__":  # Runs website
     app.run(debug=True)
