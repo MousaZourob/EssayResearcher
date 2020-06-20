@@ -7,12 +7,12 @@ def home():                                 # Defines and renders home page
     if request.method == "POST":
         research = request.form["research"]
         key_words = request.form["keywords"]
-        return redirect(url_for("research", topic=research))
+        return redirect(url_for("research", topic=research, words=key_words))
     else: 
         return render_template("home.html")
 
-@app.route("/<topic>")         # Sets URL tag for research page
-def research(topic):     # Defines and renders research page
+@app.route("/<topic>+<words>")          # Sets URL tag for research page
+def research(topic, words):                         # Defines and renders research page
     return render_template("research.html")
 
 if __name__ == "__main__":  # Runs website
