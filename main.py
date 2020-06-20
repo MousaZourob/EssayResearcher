@@ -11,7 +11,7 @@ def home():                                 # Defines and renders home page
         keyword2 = request.form["keyword2"]
         keyword3 = request.form["keyword3"]
         keywords = [keyword1, keyword2, keyword3]
-        if len(topic) == 0 or len(keyword1) == 0 or (keyword2) == 0 or (keyword3) == 0:
+        if len(topic) == 0 or len(keyword1) == 0 or len(keyword2) == 0 or len(keyword3) == 0:
             flash("Fill in all the boxes!")
             return redirect(url_for("home"))
     
