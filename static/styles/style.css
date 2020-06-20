@@ -1,14 +1,3 @@
-/*
-    Color Scheme:
-    primary: rgb(102, 0, 204)
-    secondary: white
-    text: black
-
-    Font:
-    font-family: 'Montserrat', sans-serif;
-    font-family: 'Roboto', sans-serif;
-*/
-
 #top {
     position: fixed;
     top: 0;
@@ -18,4 +7,8 @@
     color: white;
     font-family: 'Montserrat', sans-serif;
     width: 100%;
+}
+p, a, input, button, form {
+    font-family: 'Roboto', sans-serif;
+    color: black;
 }
