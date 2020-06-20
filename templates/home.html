@@ -13,25 +13,29 @@
         {% endif %}
     {% endwith %}
     <form action="#" method="post">
-        <p>Topic:</p>
+        <p>Topic</p>
         <input type="text" name="research"/>
-        <p>Key words:</p>
+        <p>Key words</p>
         <input type="text" name="keywords"/> <br>
-        <p>Extra options:</p>
+        <p>Extra options</p>
         Option 1: <input type="radio" name="option1"/>
         Option 2: <input type="radio" name="option2"/>
         Option 3: <input type="radio" name="option3"/>
         <br /> <br />
-        <input type="submit" value=Submit />
+        <input type="submit" value="Search"/>
     </form>
 {% endblock %}
 
 {% block start %}
     <style>
+        #splash {
+            padding-top: 25vh;
+        }
+
         #start {
             width: 100%;
-            height: 100%;
-            background-color: rgb(102, 0, 204);
+            height: 100vh;
+            background-image: linear-gradient(to bottom right, #ca38ff, #6600cc);
             color: white;
             z-index: 10;
             position: absolute;
@@ -39,7 +43,6 @@
             left: 0;
             text-align: center;
             justify-content: center;
-            padding-top: 100px;
         }
 
         #start button {
@@ -56,16 +59,50 @@
         #start span {
             font-family: 'Roboto', sans-serif;
         }
+
+        #message {
+            color: white;
+            padding-top: 40vh;
+        }
+
+        #splash {
+            font-size: 300%;
+        }
+
+        #start p {
+            color: white;
+        }
+
+        #start {
+            -webkit-user-select: none; /* Safari */        
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE10+/Edge */
+            user-select: none; /* Standard */
+        }
+
+        #top {
+            background-image: linear-gradient(to bottom right, #ca38ff, #6600cc);
+        }
     </style>
 
-    <div id="start">
-        <h1>Essay Research Assistant</h1>
-        <span>A program that lets you specify a topic and keywords and returns information from articles on the internet.</span>
+    <div id="start" onclick="slideSplash()">
+        <h1 id="splash">Essay Research Assistant</h1>
+        <span><p>A program that lets you specify a topic and keywords and returns information from articles on the internet.</p></span>
         <br>
-        <button id="start-button">Start!</button>
+        <p id="message">Click anywhere to start</p>
         <!-- onclick="document.getElementById('start').style.display = 'none'" -->
     </div>
 
+    <script>
+        if (window.location.href.indexOf('#') > 0) {
+            document.getElementById('start').style.display = 'none'
+        }
+
+        function slideSplash() {
+            $("#start").slideUp("slow");
+        }
+    </script>
+    <!--
     <script src="{{url_for('static', filename='script.js')}}">
         /*
         if (window.location.href.indexOf('#') > 0) {document.getElementById('start').style.display = 'none'}
@@ -76,4 +113,5 @@
             });
         }); */
     </script>
+-->
 {% endblock %}
