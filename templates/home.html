@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %} 
-    <title> SmartResearch </title>
+    <title> Essay Research Assistant </title>
 {% endblock %}
 
 {% block content %}
@@ -68,13 +68,14 @@
         <!-- onclick="document.getElementById('start').style.display = 'none'" -->
     </div>
 
-    <script>
+    <script src="{{url_for('static', filename='script.js')}}">
+        /*
         if (window.location.href.indexOf('#') > 0) {document.getElementById('start').style.display = 'none'}
 
         $(document).ready(function(){
             $("#start-button").click(function(){
                 $("#start").slideUp("slow");
             });
-        });
+        }); */
     </script>
 {% endblock %}
