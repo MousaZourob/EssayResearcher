@@ -23,19 +23,19 @@
         }
     </style>
 
-    <table id="content-table" border="1">
+    <table id="content-table" border="1" margin=0 padding=0 width="100%"> 
         <tr>
-            <td><b>Excerpts: </b></td>
-            <td><b>Links: </b></td>
+            <th> Excerpts: </th> 
+            <th> Links: </th>
         </tr>
         {% for i in range(content|length) %}
             <tr>
-                <td>
+                <td width=700>
                     {% if not content[i] == None %}
                         {{content[i]}} 
                     {% endif %}
                 </td>
-                <td> <a href="{{webpages[i]}}"><u> {{webpages[i]}} </u></a> </td>  
+                <td width=300> <a href="{{webpages[i]}}"><u> {{webpages[i]}} </u></a> </td>  
             </tr>
         {% endfor %}
     </table>
