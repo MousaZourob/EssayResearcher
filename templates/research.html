@@ -12,16 +12,27 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-    <table border="1">
+    <style>
+        #content-table {
+            border: solid black 2px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #content-table td {
+            padding: 7px;
+        }
+    </style>
+
+    <table id="content-table" border="1">
         <tr>
-            <td> Excerpts: </td>
-            <td> Links: </td>
+            <td><b>Excerpts: </b></td>
+            <td><b>Links: </b></td>
         </tr>
         {% for i in range(content|length) %}
             {% if not content[i] == None %}
                 <tr>
                     <td> {{content[i]}} </td>
-                    <td> {{webpages[i]}} </td>  
+                    <td> <a href="{{webpages[i]}}">{{webpages[i]}}</a> </td>  
                 </tr>
             {% endif %}
         {% endfor %}
