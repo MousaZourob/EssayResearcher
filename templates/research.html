@@ -8,6 +8,8 @@
     {% for word in content %}
         <p> {{word}} </p>
     {% endfor %}
-    <button id="back-button" onclick="history.go(-1|'http://127.0.0.1:5000//#')">Go Back!</button>
+    <form action="http://127.0.0.1:5000/#">
+        <input type="submit" value="Go back!" />
+    </form>
 
 {% endblock %}

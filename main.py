@@ -51,8 +51,11 @@ def get_top_links(html_code):
 
 app = Flask(__name__)   # Initializes app instance 
 app.secret_key = "0RjiQhdtLs"
+temp = "#"
+
 
 @app.route("/", methods=["POST", "GET"])    # Sets URL tag for home page and initializes HTTP protocols 
+@app.route("/#", methods=["POST", "GET"]) 
 def home():                                 # Defines and renders home page
     if request.method == "POST":
         user_input = []
