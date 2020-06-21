@@ -16,14 +16,15 @@ def get_google_html(query, keywords):
 
 	return get_html_code(url)
 
-def get_paragraphs(url):
+def get_paragraphs(url, query, keywords):
 	html_code = get_html_code(url)
 	soup = BeautifulSoup(html_code, "html.parser")
 	paragraphs = []
 
 	for paragraph in soup("p"):
 		paragraph = " ".join(paragraph.get_text().split())
-		if not paragraph == "":
+		if not paragraph == "" and (query in paragraph or
+			any(kw in keywords for kw in paragraph)):
 			paragraphs.append(paragraph)
 
 	return paragraphs
@@ -55,7 +56,6 @@ app.secret_key = "0RjiQhdtLs"
 def home():                                 # Defines and renders home page
     if request.method == "POST":
         user_input = []
-
         topic = request.form["research"]
         user_input = request.form["keywords"].split(", ")
         user_input.insert(0, topic)  
@@ -74,13 +74,13 @@ def home():                                 # Defines and renders home page
     else: 
         return render_template("home.html")
 
-@app.route("/<words>")                                     # Sets URL tag for research page
-def research(words):                                       # Defines and renders research page
+@app.route("/<words>")                                      # Sets URL tag for research page
+def research(words):                                        # Defines and renders research page
     paragraphs = []
     words = words.replace("'", "")
-    paragraphs = words[1:len(words)-1].split(", ")
+    paragraphs = words[1:len(words)-1].split(", ")			# Turns words from a string to a list to be printed
 
-    return render_template("research.html", content=paragraphs)
+    return render_template("research.html", content=paragraphs)	# Renders website
     
 if __name__ == "__main__":  # Runs website
     app.run(debug=True)
