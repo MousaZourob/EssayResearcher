@@ -59,7 +59,8 @@ def home():                                 # Defines and renders home page
         topic = request.form["research"]
         user_input = request.form["keywords"].split(", ")
         user_input.insert(0, topic)  
-        print(user_input)
+
+
 
         check_empty = False
         for word in user_input:
