@@ -109,6 +109,14 @@ def research(words):                                        # Defines and render
 	for i in range(len(links)):
 		paragraphs.append(get_paragraphs(links[i], topic, keywords))
 
+	check = True
+	for paragraph in paragraphs:
+		if not paragraph == None:
+			check = False
+
+	if check:
+		flash("Add more keywords!")
+
 	return render_template("research.html", content=paragraphs, webpages=links)	# Renders website
 
 if __name__ == "__main__":  # Runs website
