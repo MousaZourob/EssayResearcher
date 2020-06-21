@@ -85,33 +85,22 @@
         }
     </style>
 
-    <div id="start" onclick="slideSplash()">
+    <div id="start">
         <h1 id="splash">Essay Research Assistant</h1>
         <span><p>A program that lets you specify a topic and keywords and returns information from articles on the internet.</p></span>
         <br>
         <p id="message">Click anywhere to start</p>
-        <!-- onclick="document.getElementById('start').style.display = 'none'" -->
     </div>
 
     <script>
         if (window.location.href.indexOf('#') > 0) {
             document.getElementById('start').style.display = 'none'
         }
-
-        function slideSplash() {
-            $("#start").slideUp("slow");
-        }
-    </script>
-    <!--
-    <script src="{{url_for('static', filename='script.js')}}">
-        /*
-        if (window.location.href.indexOf('#') > 0) {document.getElementById('start').style.display = 'none'}
-
+        
         $(document).ready(function(){
-            $("#start-button").click(function(){
+            $("#start").click(function(){
                 $("#start").slideUp("slow");
             });
-        }); */
+        });
     </script>
--->
 {% endblock %}
