@@ -10,5 +10,7 @@
             <p> {{word}} </p>
         {% endif %}
     {% endfor %}
-    <button id="back-button" onclick="history.back()">Go Back!</button>
+    <form action="./#">
+        <input type="submit" value="Go back!" />
+    </form>
 {% endblock %}
