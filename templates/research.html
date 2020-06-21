@@ -29,12 +29,14 @@
             <td><b>Links: </b></td>
         </tr>
         {% for i in range(content|length) %}
-            {% if not content[i] == None %}
-                <tr>
-                    <td> {{content[i]}} </td>
-                    <td> <a href="{{webpages[i]}}">{{webpages[i]}}</a> </td>  
-                </tr>
-            {% endif %}
+            <tr>
+                <td>
+                    {% if not content[i] == None %}
+                        {{content[i]}} 
+                    {% endif %}
+                </td>
+                <td> <a href="{{webpages[i]}}"><u> {{webpages[i]}} </u></a> </td>  
+            </tr>
         {% endfor %}
     </table>
     <form action="./#">
