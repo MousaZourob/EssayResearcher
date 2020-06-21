@@ -1,4 +1,4 @@
-# EssayResearcher
+# Essay Research Assistant
 A program that lets you specify a topic and keywords and returns information from articles on the internet. 
 The program uses Flask to display results on the web and BeautifulSoup4 to scrape through articles and websites
 for information related to the topic and keywords that the user enters. 
