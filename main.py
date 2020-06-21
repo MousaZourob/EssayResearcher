@@ -57,34 +57,37 @@ temp = "#"
 @app.route("/", methods=["POST", "GET"])    # Sets URL tag for home page and initializes HTTP protocols 
 @app.route("/#", methods=["POST", "GET"]) 
 def home():                                 # Defines and renders home page
-    if request.method == "POST":
-        user_input = []
-        topic = request.form["research"]
-        user_input = request.form["keywords"].split(", ")
-        user_input.insert(0, topic)  
+	if request.method == "POST":
+		user_input = []
+		paragraphs = []
 
+		topic = request.form["research"]
+		user_input = request.form["keywords"].split(", ")
 
+		links = get_top_links(get_google_html(topic, user_input))
 
-        check_empty = False
-        for word in user_input:
-            if not word:    
-                check_empty =True
+		for link in links:
+			paragraphs.append(get_paragraphs(link, topic, user_input))
 
-        if check_empty:
-            flash("Fill in all the boxes!")
-            return redirect(url_for("home"))
+		check_empty = False
+		for word in user_input:
+			if not word:    
+				check_empty =True
 
-        return redirect(url_for("research", words=list(user_input)))
-    else: 
-        return render_template("home.html")
+		if check_empty:
+			flash("Fill in all the boxes!")
+			return redirect(url_for("home"))
+
+		return redirect(url_for("research", words=["12", "34", "56"]))
+	else: 
+		return render_template("home.html")
 
 @app.route("/<words>")                                      # Sets URL tag for research page
 def research(words):                                        # Defines and renders research page
-    paragraphs = []
-    words = words.replace("'", "")
-    paragraphs = words[1:len(words)-1].split(", ")			# Turns words from a string to a list to be printed
+	paragraphs = []
+	paragraphs = words[1:len(words)-1].split(", ")			# Turns words from a string to a list to be printed
 
-    return render_template("research.html", content=paragraphs)	# Renders website
-    
+	return render_template("research.html", content=["test1", "test2", "test3"])	# Renders website
+	
 if __name__ == "__main__":  # Runs website
-    app.run(debug=True)
+	app.run(debug=True)
