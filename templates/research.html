@@ -6,10 +6,9 @@
 
 {% block content %}
     {% for word in content %}
-        <p> {{word}} </p>
+        {% if not word == None %}
+            <p> {{word}} </p>
+        {% endif %}
     {% endfor %}
-    <form action="http://127.0.0.1:5000/#">
-        <input type="submit" value="Go back!" />
-    </form>
-
+    <button id="back-button" onclick="history.back()">Go Back!</button>
 {% endblock %}

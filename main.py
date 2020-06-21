@@ -19,37 +19,38 @@ def get_google_html(query, keywords):
 def get_paragraphs(url, query, keywords):
 	html_code = get_html_code(url)
 	soup = BeautifulSoup(html_code, "html.parser")
-	paragraphs = []
 
 	for paragraph in soup("p"):
 		paragraph = " ".join(paragraph.get_text().split())
+
 		if not paragraph == "" and (query in paragraph or
 			any(kw in keywords for kw in paragraph)):
-			paragraphs.append(paragraph)
 
-	return paragraphs
+			if len(paragraph) > 200:
+				paragraph = paragraph[:200] + " ..."
+				
+			return paragraph
 
 def get_top_links(html_code):
-    soup = BeautifulSoup(html_code, "html.parser")
-    avoidLinks = tuple(["youtube.", "google."])
-    links = []
+	soup = BeautifulSoup(html_code, "html.parser")
+	avoidLinks = tuple(["youtube.", "google."])
+	links = []
 
-    for div in soup.find_all("div", class_="BNeawe s3v9rd AP7Wnd"):
-        div.decompose()
+	for div in soup.find_all("div", class_="BNeawe s3v9rd AP7Wnd"):
+		div.decompose()
 
-    for div in soup.find_all("div", class_="kCrYT"):
+	for div in soup.find_all("div", class_="kCrYT"):
 
-        for link in div.find_all("a"):
-            currentLink = link.get("href")
+		for link in div.find_all("a"):
+			currentLink = link.get("href")
 
-            if not any(al in currentLink for al in avoidLinks):
+			if not any(al in currentLink for al in avoidLinks):
 
-                if "&sa=" in currentLink:
-                    currentLink = currentLink[7:currentLink.index("&sa=")]
+				if "&sa=" in currentLink:
+					currentLink = currentLink[7:currentLink.index("&sa=")]
 
-                links.append(currentLink)
-
-    return links
+				links.append(currentLink)
+	return links
 
 # BS4 Stuff
 ###########################################################################################
@@ -87,24 +88,28 @@ def home():                                 # Defines and renders home page
 @app.route("/<words>")                                      # Sets URL tag for research page
 def research(words):                                        # Defines and renders research page
 	paragraphs = []
-	input = []
-	input = words[1:len(words)-1].split(", ")				# Turns words from a string to a list to be printed
 
-	print("test")
+	words = words.replace("\'", "")
 
-	topic = input[0]
-	keywords = input[1:len(input)-1]
+	print(words)
 
-	links = get_top_links(get_google_html(topic, keywords))
+	temp = words[1:len(words)-1].split(", ")
 
-	for link in links:
-		paragraphs.append(get_paragraphs(link, topic, keywords))
-		print(link)
+	print(temp)	
 
-	print("test")
-	print(paragraphs)
+	topic = temp[0]
+	keywords = temp[1:]
+
+	print(topic)
+	print(keywords)
+
+	code_html = get_google_html(topic, keywords)
+	links = get_top_links(code_html)
+
+	for i in range(len(links)):
+		paragraphs.append(get_paragraphs(links[i], topic, keywords))
 
 	return render_template("research.html", content=paragraphs)	# Renders website
-	
+
 if __name__ == "__main__":  # Runs website
 	app.run(debug=True)
