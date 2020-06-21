@@ -109,7 +109,7 @@ def research(words):                                        # Defines and render
 	for i in range(len(links)):
 		paragraphs.append(get_paragraphs(links[i], topic, keywords))
 
-	return render_template("research.html", content=paragraphs)	# Renders website
+	return render_template("research.html", content=paragraphs, webpages=links)	# Renders website
 
 if __name__ == "__main__":  # Runs website
 	app.run(debug=True)

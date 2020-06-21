@@ -5,11 +5,20 @@
 {% endblock %}
 
 {% block content %}
-    {% for word in content %}
-        {% if not word == None %}
-            <p> {{word}} </p>
-        {% endif %}
-    {% endfor %}
+    <table border="1">
+        <tr>
+            <td> Excerpts: </td>
+            <td> Links: </td>
+        </tr>
+        {% for i in range(content|length) %}
+            {% if not content[i] == None %}
+                <tr>
+                    <td> {{content[i]}} </td>
+                    <td> {{webpages[i]}} </td>  
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
     <form action="./#">
         <input type="submit" value="Go back!" />
     </form>
