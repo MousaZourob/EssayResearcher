@@ -26,8 +26,8 @@ def get_paragraphs(url, query, keywords):
 		if not paragraph == "" and (query in paragraph or
 			any(kw in keywords for kw in paragraph)):
 
-			if len(paragraph) > 200:
-				paragraph = paragraph[:200] + " ..."
+			if len(paragraph) > 300:
+				paragraph = paragraph[:300] + " ..."
 				
 			return paragraph
 
