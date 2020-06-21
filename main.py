@@ -76,7 +76,11 @@ def home():                                 # Defines and renders home page
 
 @app.route("/<words>")                                     # Sets URL tag for research page
 def research(words):                                       # Defines and renders research page
-    return render_template("research.html", content=list(words))
+    paragraphs = []
+    words = words.replace("'", "")
+    paragraphs = words[1:len(words)-1].split(", ")
 
+    return render_template("research.html", content=paragraphs)
+    
 if __name__ == "__main__":  # Runs website
     app.run(debug=True)
