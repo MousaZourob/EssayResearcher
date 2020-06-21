@@ -62,62 +62,59 @@ temp = "#"
 
 
 @app.route("/", methods=["POST", "GET"])    # Sets URL tag for home page and initializes HTTP protocols 
-@app.route("/#", methods=["POST", "GET"]) 
+@app.route("/#", methods=["POST", "GET"]) 	# Second route to not display landing page twice
 def home():                                 # Defines and renders home page
-	if request.method == "POST":
-		user_input = []
+	if request.method == "POST":			# If request method is post go to research page
+		user_input = []		# Initializes user input list
+		choices_list = []
+
+		topic = request.form["research"]	# Gets topic from form
+		user_input = request.form["keywords"].split(", ")	# Gets keywords from keywords box
 		
-		topic = request.form["research"]
-		user_input = request.form["keywords"].split(", ")
+		choices_list.append(request.form.getlist('option1'))	# Gets extra options
+		choices_list.append(request.form.getlist('option2'))	
+		choices_list.append(request.form.getlist('option3'))	
 
-		user_input.insert(0, topic)
+		user_input.insert(0, topic)		# Combines topic and keywords into 1 list
 
-		check_empty = False
-		for word in user_input:
+		check_empty = False		# Checks if all boxes have been filled or not 
+		for word in user_input:		# Goes through every word to make sure they're all full
 			if not word:    
 				check_empty =True
 
-		if check_empty:
+		if check_empty:		# If they're not full flashes a message asking to fill in all the boxes
 			flash("Fill in all the boxes!")
 			return redirect(url_for("home"))
 
-		return redirect(url_for("research", words=user_input))
+		return redirect(url_for("research", words=user_input, choices=choices_list))	# Redirects user to research page to see results
 	else: 
-		return render_template("home.html")
+		return render_template("home.html")		# If request is a GET take them to home page to enter data
 
-@app.route("/<words>")                                      # Sets URL tag for research page
-def research(words):                                        # Defines and renders research page
+@app.route("/<words>+<choices>")                                      # Sets URL tag for research page
+def research(words, choices):                                         # Defines and renders research page
 	paragraphs = []
 
-	words = words.replace("\'", "")
+	words = words.replace("\'", "")				# Removes ' from words after it gets converted to string
+	temp = words[1:len(words)-1].split(", ")	# Removes [] and splits it into a list
 
-	print(words)
+	topic = temp[0]			# Gets topic which equals first index in temp
+	keywords = temp[1:]		# Gets keywords from temp list
 
-	temp = words[1:len(words)-1].split(", ")
+	code_html = get_google_html(topic, keywords)	# Gets HTML code
+	links = get_top_links(code_html)				# Sends HTML code to get top links
 
-	print(temp)	
+	for i in range(len(links)):		# Gets paragraphs using links
+		paragraphs.append(get_paragraphs(links[i], topic, keywords))	# Adds paragraphs to paragraphs list
 
-	topic = temp[0]
-	keywords = temp[1:]
-
-	print(topic)
-	print(keywords)
-
-	code_html = get_google_html(topic, keywords)
-	links = get_top_links(code_html)
-
-	for i in range(len(links)):
-		paragraphs.append(get_paragraphs(links[i], topic, keywords))
-
-	check = True
-	for paragraph in paragraphs:
+	check = True	# Checks if paragraphs is empty
+	for paragraph in paragraphs:	# Goes through every paragraph to check if its empty
 		if not paragraph == None:
 			check = False
 
-	if check:
+	if check:	# If it empty flashes message 
 		flash("Add more keywords!")
 
-	return render_template("research.html", content=paragraphs, webpages=links)	# Renders website
+	return render_template("research.html", content=paragraphs, webpages=links)	# Renders research page
 
 if __name__ == "__main__":  # Runs website
 	app.run(debug=True)
