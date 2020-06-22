@@ -30,17 +30,23 @@
         </tr>
         {% for i in range(content|length) %}
             <tr>
-                <td style="width:70vw;">
+                <td>
                     {% if not content[i] == None %}
                         {{content[i]}} 
                     {% else %}
                         <p> Nothing was found, check the link for more information </p>
                     {% endif %}
                 </td>
-                <td style="width: 30vw;" <a href="{{webpages[i]}}"><u> {{webpages[i]}} </u></a> </td>  
+                <td><a href="{{webpages[i]}}"><u> Read More </u></a> </td>  
             </tr>
         {% endfor %}
     </table>
+
+    <style>
+        #content-table {
+            margin: 0px 20%;
+        }
+    </style>
     <form action="./#">
         <input type="submit" value="Go back!" />
     </form>
