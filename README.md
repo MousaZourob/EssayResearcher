@@ -5,7 +5,7 @@ The program uses **Flask** to display results on the web and **BeautifulSoup4** 
 <br />
 
 ### Demo:
-
+![Essay_Research_Assistant](https://user-images.githubusercontent.com/66835262/86067439-df965280-ba42-11ea-8981-206d67c91648.gif)
 
 ### Collaborators: 
 * https://github.com/MousaZourob
