@@ -2,6 +2,7 @@
 A **Python** website that helps users find articles with excerpts to streamline their research process. The user is able to input a topic sentence while having the ability to include keywords to refine their search. The user also has the option to choose the type of suffix for the URL, the options being, .gov, .edu, or .org sites.
 <br />
 The program uses **Flask** to display results on the web and **BeautifulSoup4** to scrape through articles and websites for information related to the topic and keywords that the user enters. To build the front-end **HTML/CSS/JavaScript** and **Flask** were used, and for the backend Python and **BeautifulSoup4** were used. Built for the **DefHacks 2020 Hackathon**.
+<br />
 **Devpost:** https://devpost.com/software/essay-research-assistant
 <br />
 
