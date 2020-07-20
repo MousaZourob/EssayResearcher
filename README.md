@@ -10,7 +10,6 @@ The program uses **Flask** to display results on the web and **BeautifulSoup4** 
 ![Essay_Research_Assistant](https://user-images.githubusercontent.com/66835262/86067439-df965280-ba42-11ea-8981-206d67c91648.gif)
 
 ### Collaborators: 
-* https://github.com/MousaZourob
 * https://github.com/ammar-s847
 * https://github.com/ellenwang02
 * https://github.com/JunZheng-dev
