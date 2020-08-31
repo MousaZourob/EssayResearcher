@@ -7,9 +7,7 @@ A **Python** website to ease the process of preparing sources for an essay or as
 * Option to specify the type of suffix for the URL, with the options being, .gov, .edu, or .org sites.
 * Returns list of articles with related excerpts as well as URLs to said articles
 
-<br />
-**BeautifulSoup4** to scr
-<br />
+**Devpost:** https://devpost.com/software/essay-research-assistant
 
 ### Demo:
 ![Essay_Research_Assistant](https://user-images.githubusercontent.com/66835262/86067439-df965280-ba42-11ea-8981-206d67c91648.gif)
