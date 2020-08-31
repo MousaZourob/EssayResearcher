@@ -8,7 +8,7 @@ A **Python** website to ease the process of preparing sources for an essay or as
 * Returns list of articles with related excerpts as well as URLs to said articles
 
 <br />
-**Devpost**: https://devpost.com/software/essay-research-assistant
+######Devpost: https://devpost.com/software/essay-research-assistant
 <br />
 
 ### Demo:
