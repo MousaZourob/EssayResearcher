@@ -1,6 +1,6 @@
 # Essay Researcher
 ### Overview:
-A **Python** website to ease the process of preparing sources for an essay or assignment. After entering a topic sentence and keywords, a list of articles with excerpts containing these words is returned, allowing the user to fundamentally streamline their research process. The program uses **Flask** to display results on the web and **BeautifulSoup4** to scrape through articles and websites for information related to the topic and keywords that the user enters. To build the front-end **HTML/CSS/JavaScript** and **Flask** were used, and for the backend Python and **BeautifulSoup4** were used. Built for the **DefHacks 2020 Hackathon**.
+A **Python** website to ease the process of preparing sources for an essay or assignment. After entering a topic sentence and keywords, a list of articles with excerpts containing these words is returned, allowing the user to fundamentally streamline their research process. The program uses the **Flask** framework to display results on the web, and **BeautifulSoup4** to scrape through websites for information related to the topic and keywords that the user enters. To build the front-end **HTML/CSS** and **Bootstrap** were used, and for the backend Python and **BeautifulSoup4** were used. Built for the **DefHacks 2020 Hackathon**.
 
 ### Features
 * User is able to input a topic sentence and keywords to refine their search 
